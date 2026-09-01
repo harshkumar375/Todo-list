@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   tasks.forEach((task) => renderTask(task));
 
-  addTaskButton.addEventListener("click", () => {
+  function createTask() {
     const taskText = todoInput.value.trim();
     if (taskText === "") return;
 
@@ -21,7 +21,16 @@ document.addEventListener("DOMContentLoaded", () => {
     saveTasks();
     renderTask(newTask);
     todoInput.value = "";
-    // console.log(tasks);
+  }
+
+  addTaskButton.addEventListener("click", () => {
+    createTask();
+  });
+
+  document.addEventListener('keydown', (evt) => {
+    const key = evt.key;
+    if(key !== "Enter") return;
+    createTask();
   });
 
   function renderTask(task) {
@@ -29,12 +38,15 @@ document.addEventListener("DOMContentLoaded", () => {
     li.setAttribute("data-id", task.id);
     if (task.completed) li.classList.add("completed");
     li.innerHTML = `
-    <span>${task.text}</span>
+    <div>
+      <input type="checkbox">
+      <span>${task.text}</span>
+    </div>
     <button>Delete</button>
     `;
 
     li.addEventListener("click", (evt) => {
-      if (evt.target.tagName === "BUTTON") return;
+      if (evt.target.tagName !== "INPUT") return;
       task.completed = !task.completed;
       li.classList.toggle("completed");
       saveTasks();

@@ -61,6 +61,7 @@ h1 {
     height: 3.5rem;
     cursor: pointer;
     transition: transform 1s ease-in-out;
+    box-shadow: 0rem 0rem 0.6rem rgba(0, 0, 0, 0.6);
 }
 
 #add-task-btn:active {
@@ -103,4 +104,17 @@ h1 {
 #todo-list .completed {
     background-color: darkslategray;
     text-decoration: line-through;
+}
+
+#todo-list li div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+#todo-list li div input {
+    transform: scale(1.8);
+    cursor: pointer;
+    margin-top: 0.2rem;
 }
