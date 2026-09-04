@@ -118,3 +118,14 @@ h1 {
     cursor: pointer;
     margin-top: 0.2rem;
 }
+
+#todo-list > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 8px;
+    border: none;
+    border-radius: 1rem;
+    margin-bottom: 6px;
+    background-color: #21363d;
+}
